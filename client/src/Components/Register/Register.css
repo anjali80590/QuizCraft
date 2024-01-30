@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Jomhuria&family=Single+Day&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jomhuria&family=Poppins:wght@200;400;500;600&family=Single+Day&display=swap");
+body {
+  font-family: "poppins";
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 541px;
+  background-color: #ffffff;
+  margin: 0 auto;
+  margin-top: 80px;
+  width: 1066px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.register-header {
+  font-size: 48px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-family: "Jomhuria", serif;
+  font-size: 100px;
+}
+
+.register-buttons {
+  display: flex;
+  gap: 70px;
+  margin-bottom: 20px;
+}
+
+.register-button {
+  padding: 10px 70px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: 0px 3px 6px #0000001a;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+
+.register-button.active,
+.register-button:hover {
+  box-shadow: 0px 0px 50px 0px #0019ff3d;
+}
+
+.signup-form,
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form-group-register {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-label-register {
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  text-align: right;
+  width: 190px;
+}
+
+.form-input {
+  border: none;
+  background-color: #f4f4f4;
+  border: 1px solid #f4f4f4;
+  border-radius: 5px;
+  width: 388px;
+  height: 38px;
+  font-size: 18px;
+  border: none;
+  padding: 0px 7px;
+}
+.form-input {
+  outline: none;
+}
+.input-label {
+  flex: 1;
+  text-align: right;
+  width: 235px;
+}
+
+.form-input {
+  flex: 2;
+}
+.input-error {
+  border: 1px solid #d60000;
+  color: #d60000;
+}
+
+.input-error::placeholder {
+  color: #d60000;
+  font-size: 12px;
+}
+
+.submit-button {
+  border: none;
+  border-radius: 5px;
+  color: #474444;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  width: 274px;
+  text-align: center;
+  margin-top: 10px;
+  height: 38px;
+  margin-left: 160px;
+  font-size: 20px;
+  background-color: #a9bcff;
+}
+.form-group-register {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 30px;
+}

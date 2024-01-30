@@ -1,0 +1,351 @@
+.quiz-creator {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px #0000000d;
+  padding: 10px 20px;
+  padding-bottom: 20px;
+  font-family: "poppins";
+  width: 800px;
+  margin: auto;
+  position: relative;
+  box-shadow: 0 2px 4px #9f9f9f;
+  border-radius: 10px;
+  border: 1px solid #9f9f9f;
+  text-align: center;
+}
+
+.question-with-remove {
+  display: flex;
+  align-items: center;
+}
+
+.remove-question-button {
+  margin-left: -25px;
+  margin-right: 40px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.quiz-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0;
+  width: 670px;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.question-block {
+  margin-bottom: 15px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 0px 20px;
+  font-size: 20px;
+}
+
+.poll-question-input,
+.option-input {
+  width: 100px;
+  margin: 0 15px;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  width: 670px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px 1px 1px #d6e9c6;
+  box-shadow: 0px 0px 25px 0px #00000026;
+}
+.poll-question-input:focus {
+  outline: none;
+}
+.option-input {
+  width: 250px;
+  color: #9f9f9f;
+  margin-top: 10px;
+}
+.max-questions-label {
+  position: absolute;
+  right: 100px;
+  color: #9f9f9f;
+}
+.add-question {
+  background-color: #4caf50;
+  color: #ffffff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: none;
+  margin-left: 20px;
+}
+.add-question-button {
+  background-color: #ffffff;
+  border: none;
+  font-size: 40px;
+  color: #9f9f9f;
+}
+
+.max-que {
+  position: absolute;
+  right: 20px;
+}
+
+.remove-question {
+  background-color: #f44336;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 0;
+  box-shadow: none;
+}
+
+.add-option,
+.remove-option {
+  background-color: #f44336;
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  width: 150px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.cancel-button,
+.create-quiz-button {
+  border: none;
+  padding: 12px 30px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+.option-label {
+  margin-right: 30px;
+}
+
+.cancel-button {
+  background-color: #9e9e9e;
+  color: #ffffff;
+  background-color: #ffffff;
+  color: #474444;
+  box-shadow: 0px 0px 25px 0px #00000026;
+  font-size: 20px;
+  width: 280px;
+  margin-left: 50px;
+  color: black;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.create-quiz-button {
+  background-color: #60b84b;
+  color: #ffffff;
+  float: right;
+  box-shadow: none;
+  width: 260px;
+  font-size: 20px;
+}
+
+.options-section {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.quiz-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigation-button {
+  border: none;
+  background-color: #ffffff;
+  color: #9e9e9e;
+  padding: 8px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 5px;
+
+  box-shadow: 1px 1px 1px 1px #d6e9c6;
+}
+
+.option-type-selection label {
+  margin-right: 10px;
+  margin: 20px 30px;
+  color: #9f9f9f;
+}
+
+.option-type-selection input[type="radio"] {
+  margin-right: 5px;
+}
+.option-type-selection {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 710px;
+  text-align: left;
+  font-size: 20px;
+}
+
+.timer-selection button {
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  margin-top: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #9e9e9e;
+  box-shadow: 0px 0px 25px 0px #00000026;
+}
+
+.timer-selection button.active {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+.hidden {
+  display: none;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+}
+
+.correct-answer-radio {
+  margin-right: 10px;
+}
+
+.option-input,
+.correct-option-input,
+.add-option-button {
+  padding: 12px;
+  font-size: 20px;
+
+  color: #000;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+.option-input:focus {
+  outline: none;
+}
+
+.add-option-button {
+  background-color: #ffffff;
+  box-shadow: 1px 1px 1px 1px #d6e9c6;
+  color: #9f9f9f;
+  font-size: 20px;
+  width: 290px;
+  margin-right: 420px;
+  margin-top: 10px;
+  box-shadow: 0px 0px 25px 0px #00000026;
+}
+
+.correct-option-input {
+  background-color: #4caf50;
+  border-color: #d6e9c6;
+}
+.del {
+  border: none;
+  background-color: #ffffff;
+
+  border: none;
+}
+
+.timer-selection {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: 140px;
+  justify-content: space-between;
+  position: absolute;
+  right: 70px;
+  bottom: 160px;
+}
+.timer-selection span {
+  font-size: 20px;
+  color: #9f9f9f;
+  font-weight: 500;
+  font-family: "poppins";
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px #0000001a;
+  width: 700px;
+  height: 461px;
+  text-align: center;
+}
+.modal-content h2 {
+  margin-top: 100px;
+  font-size: 39px;
+  width: 450px;
+  margin: 0 auto;
+  margin-top: 100px;
+  color: #474444;
+  font-family: "poppins";
+  font-weight: 600;
+}
+
+.modal-link-input {
+  margin-top: 50px;
+  width: 100%;
+  padding: 10px;
+  height: 60px;
+  padding: 0 10px;
+  margin-bottom: 20px;
+  border-radius: 7px;
+  color: #474444;
+  font-size: 20px;
+  font-size: "poppins";
+  font-weight: 600;
+  width: 600px;
+  background-color: #ededed;
+  border: none;
+}
+.modal-link-input:focus {
+  outline: none;
+}
+.share-link {
+  margin-top: 40px;
+  width: 279px;
+  height: 46px;
+  color: white;
+  background-color: #60b84b;
+  font-family: "poppins";
+  font-size: 21px;
+  font-weight: 500;
+  border-radius: 5px;
+}
