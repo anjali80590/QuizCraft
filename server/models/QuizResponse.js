@@ -11,14 +11,14 @@ const quizResponseSchema = new mongoose.Schema({
     ref: "Quiz",
     required: true,
   },
-  answers: [Number], // Assuming answers are stored as an array of numbers representing the selected options
+  answers: [Number], 
   selectedOptions: [
     {
       questionId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Question",
       },
-      optionIndex: Number, // This field will store the index of the selected option
+      optionIndex: Number, 
     },
   ],
   result: {
@@ -26,7 +26,7 @@ const quizResponseSchema = new mongoose.Schema({
     message: String,
     correctAttempts: Number,
     incorrectAttempts: Number,
-    // You can include selectedOptions here as well if you want to return it in the result
+
   },
   questions: [
     {

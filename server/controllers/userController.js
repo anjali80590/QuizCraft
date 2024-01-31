@@ -1,4 +1,4 @@
-require("dotenv").config(); // Ensure you have this line to use environment variables
+require("dotenv").config(); 
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
