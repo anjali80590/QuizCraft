@@ -279,7 +279,7 @@
   }
 
   .quiz-completed-container img {
-    width: 200px;
+    width: 250px;
   }
 
   .quiz-completed-container h1 {
@@ -287,6 +287,7 @@
   }
 
   .quiz-completed-container p {
+    margin: 10px 0;
     font-size: 1.6rem;
   }
 }
