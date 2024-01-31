@@ -16,9 +16,69 @@ const QuizQuestions = () => {
   const [timeRemaining, setTimeRemaining] = useState(null);
   const [timer, setTimer] = useState(null);
   const [quizDataReady, setQuizDataReady] = useState(false);
+  const [submissionStarted, setSubmissionStarted] = useState(false);
 
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
+
+  useEffect(() => {
+    let isActive = true;
+
+    const fetchQuestionsAndImpressions = async () => {
+      try {
+        const questionsResponse = await fetch(
+          `${BaseUrl}/api/questions/user/${userId}/${quizId}/question`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!questionsResponse.ok) {
+          throw new Error(`HTTP error! status: ${questionsResponse.status}`);
+        }
+
+        const questionsArray = await questionsResponse.json();
+
+        if (isActive) {
+          setQuestions(questionsArray);
+          console.log(questionsArray);
+          if (questionsArray.length > 0) {
+            setQuizType(questionsArray[0].quizType);
+            setTimer(questionsArray[0].timer);
+            setTimeRemaining(questionsArray[0].timer);
+            setQuizDataReady(true);
+          }
+        }
+
+        if (!impressionsFetched && isActive) {
+          const impressionsResponse = await fetch(
+            `${BaseUrl}/api/quizzes/quiz/${userId}/${quizId}/impression`,
+            {
+              method: "GET",
+            }
+          );
+
+          if (!impressionsResponse.ok) {
+            throw new Error(
+              `HTTP error! status: ${impressionsResponse.status}`
+            );
+          }
+
+          setImpressionsFetched(true);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchQuestionsAndImpressions();
+
+    return () => {
+      isActive = false;
+    };
+  }, [quizId, userId]);
 
   const submitQuiz = async () => {
     let submissionData;
@@ -62,18 +122,43 @@ const QuizQuestions = () => {
     }
   };
 
+  useEffect(() => {
+    if (questions.length > 0 && currentQuestionIndex < questions.length) {
+      const currentQuestionTimer = questions[currentQuestionIndex].timer;
+      setTimeRemaining(currentQuestionTimer);
+
+      const intervalId = setInterval(() => {
+        setTimeRemaining((prevTime) => {
+          if (prevTime <= 1) {
+            clearInterval(intervalId);
+            if (currentQuestionIndex === questions.length - 1) {
+              setQuizCompleted(true);
+              if (quizDataReady) {
+                submitQuiz();
+              }
+            } else {
+              goToNextQuestion();
+            }
+            return 0;
+          }
+          return prevTime - 1;
+        });
+      }, 1000);
+
+      return () => clearInterval(intervalId);
+    }
+  }, [currentQuestionIndex, questions, quizDataReady]);
+
   const goToNextQuestion = useCallback(() => {
     if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-      setTimer(questions[currentQuestionIndex + 1]?.timer || null);
-      setTimeRemaining(questions[currentQuestionIndex + 1]?.timer || null);
+      setCurrentQuestionIndex((currentIndex) => currentIndex + 1);
     } else {
       setQuizCompleted(true);
       if (quizDataReady) {
         submitQuiz();
       }
     }
-  }, [currentQuestionIndex, questions, submitQuiz, quizDataReady]);
+  }, [currentQuestionIndex, questions.length, submitQuiz, quizDataReady]);
 
   const fetchTotalImpressions = useCallback(async () => {
     try {
@@ -99,90 +184,12 @@ const QuizQuestions = () => {
     fetchTotalImpressions();
   }, [fetchTotalImpressions]);
 
-  useEffect(() => {
-    let isActive = true;
-
-    const fetchQuestionsAndImpressions = async () => {
-      try {
-        const questionsResponse = await fetch(
-          `${BaseUrl}/api/questions/user/${userId}/${quizId}/question`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        if (!questionsResponse.ok) {
-          throw new Error(`HTTP error! status: ${questionsResponse.status}`);
-        }
-
-        const questionsArray = await questionsResponse.json();
-
-        if (isActive) {
-          setQuestions(questionsArray);
-          console.log(questionsArray);
-          if (questionsArray.length > 0) {
-            setQuizType(questionsArray[0].quizType);
-            setTimer(questionsArray[0].timer || null);
-            setTimeRemaining(questionsArray[0].timer || null);
-            setQuizDataReady(true);
-            console.log("timerremaning", { timeRemaining });
-            console.log("timer", { timer });
-          }
-        }
-
-        if (!impressionsFetched && isActive) {
-          const impressionsResponse = await fetch(
-            `${BaseUrl}/api/quizzes/quiz/${userId}/${quizId}/impression`,
-            {
-              method: "GET",
-            }
-          );
-
-          if (!impressionsResponse.ok) {
-            throw new Error(
-              `HTTP error! status: ${impressionsResponse.status}`
-            );
-          }
-
-          setImpressionsFetched(true);
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-
-    fetchQuestionsAndImpressions();
-
-    return () => {
-      isActive = false;
-    };
-  }, [quizId, userId, impressionsFetched]);
-
   const handleOptionSelect = useCallback((questionIndex, optionIndex) => {
     setSelectedAnswers((prevAnswers) => ({
       ...prevAnswers,
       [questionIndex]: optionIndex,
     }));
   }, []);
-
-  useEffect(() => {
-    if (timeRemaining === null) {
-      return;
-    }
-
-    if (timeRemaining <= 0) {
-      goToNextQuestion();
-      return;
-    }
-
-    const intervalId = setInterval(() => {
-      setTimeRemaining((prevTime) => prevTime - 1);
-    }, 1000);
-
-    return () => clearInterval(intervalId);
-  }, [timeRemaining, goToNextQuestion]);
 
   const renderOptions = useCallback(
     (options, questionIndex) => {

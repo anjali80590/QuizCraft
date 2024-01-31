@@ -1,2 +1,2 @@
-const BaseUrl = 'http://localhost:5000';
+const BaseUrl = 'https://quizzes-tz5s.onrender.com';
 export default BaseUrl;

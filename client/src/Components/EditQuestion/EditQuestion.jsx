@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./EditQuestion.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useParams, useLocation } from "react-router-dom";

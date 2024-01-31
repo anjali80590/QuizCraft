@@ -11,12 +11,22 @@ const quizResponseSchema = new mongoose.Schema({
     ref: "Quiz",
     required: true,
   },
-  answers: [Number], 
+  answers: [Number], // Assuming answers are stored as an array of numbers representing the selected options
+  selectedOptions: [
+    {
+      questionId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Question",
+      },
+      optionIndex: Number, // This field will store the index of the selected option
+    },
+  ],
   result: {
     success: Boolean,
     message: String,
     correctAttempts: Number,
     incorrectAttempts: Number,
+    // You can include selectedOptions here as well if you want to return it in the result
   },
   questions: [
     {
@@ -27,14 +37,6 @@ const quizResponseSchema = new mongoose.Schema({
   submittedAt: {
     type: Date,
     default: Date.now,
-  },
-  impressions: {
-    type: Number,
-    default: 0, 
-  },
-  quizName: {
-    type: String,
-    required: true, 
   },
 });
 
