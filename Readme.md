@@ -1,2 +1,2 @@
 # Quizzes
-## [Live Link](https://quizzes-24.netlify.app)
+## [Live Link](https://anjali-quizcraft.netlify.app)
